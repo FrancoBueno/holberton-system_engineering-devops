@@ -1,6 +1,2 @@
-#!/bin/sh
-#
-#Print something, then run ls
-
-echo About to run the ls command.
-ls
+#!/bin/bash
+pwd
