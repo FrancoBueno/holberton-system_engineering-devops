@@ -1,2 +1,3 @@
 #!/bin/bash
-chown -h guillaume:holberton _hello 15
+chown --from guillaume betty hello
+
