@@ -1,2 +1,2 @@
 #!/bin/bash
-mv .html /root/holberton-system_engineering-devops/0x00-shell_basics /root/holberton-system_engineering-devops
+cp -u *.html ..
