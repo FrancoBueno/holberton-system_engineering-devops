@@ -1,0 +1,30 @@
+total 96
+drwxr-xr-x 2 root root 4096 Jun 14 09:20 .
+drwxr-xr-x 6 root root  164 Jun 14 08:59 ..
+-rwxr--r-- 1 root root   35 Jun 14 09:04 0-hello_world
+-rwxr--r-- 1 root root   45 Jun 14 06:58 0-hello_world~
+-rwxr--r-- 1 root root   27 Jun 14 07:43 1-confused_smiley
+-rwxr--r-- 1 root root   25 Jun 14 07:03 1-confused_smiley~
+-rwxr--r-- 1 root root   32 Jun 14 07:43 2-hellofile
+-rwxr--r-- 1 root root   30 Jun 14 07:07 2-hellofile~
+-rwxr--r-- 1 root root   39 Jun 14 07:16 #3-twofiles#
+-rwxr--r-- 1 root root   45 Jun 14 09:05 3-twofiles
+-rwxr--r-- 1 root root   44 Jun 14 07:15 3-twofiles~
+-rwxr--r-- 1 root root   38 Jun 14 09:05 4-lastlines
+-rwxr--r-- 1 root root   35 Jun 14 07:10 4-lastlines~
+-rwxr--r-- 1 root root   37 Jun 14 09:05 5-firstlines
+-rwxr--r-- 1 root root   36 Jun 14 09:10 6-third_line
+-rwxr--r-- 1 root root   28 Jun 14 07:30 6-third_line~
+-rwxr--r-- 1 root root   84 Jun 14 09:08 7-file
+-rwxr--r-- 1 root root   86 Jun 14 07:54 7-file~
+-rwxr--r-- 1 root root   35 Jun 14 09:20 8-cwd_state
+-rw-r--r-- 1 root root   12 Jun 14 09:17 8-cwd_state~
+-rw-r--r-- 1 root root    0 Jun 14 06:44 can
+-rw-r--r-- 1 root root    1 Jun 14 06:52 Hello World
+-rw-r--r-- 1 root root    1 Jun 14 09:04 Hello, World
+-rw-r--r-- 1 root root   43 Jun 14 09:08 \*\'Holberton
+-rw-r--r-- 1 root root    3 Jun 14 09:10 iacta
+-rw-r--r-- 1 root root    0 Jun 14 09:20 ls_wd_content
+-rw-r--r-- 1 root root    1 Jun 14 07:43 (Ôo)
+-rw-r--r-- 1 root root    0 Jun 14 06:59 README.md
+-rw-r--r-- 1 root root    0 Jun 14 07:57 School\'\*$\?\*\*\*\*\*:)
