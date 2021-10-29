@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+#100 project
+
+cat /etc/passwd
