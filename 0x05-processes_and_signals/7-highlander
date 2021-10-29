@@ -2,7 +2,7 @@
 #7.Highlander
 
 trap 'echo "I am invincible!!!"' SIGTERM
-for ((loop=1;loop>0;loop++))
+for ((;;))
 do
 	echo "To infinity and beyond"
 	sleep 2
