@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 #7.Highlander
 
+trap 'echo "I am invincible!!!"' SIGTERM
 for ((loop=1;loop>0;loop++))
 do
 	echo "To infinity and beyond"
