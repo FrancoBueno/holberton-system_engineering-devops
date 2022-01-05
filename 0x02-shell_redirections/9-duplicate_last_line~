@@ -1,2 +1,0 @@
-#!/bin/bash
-tail --line=1 / tail --line=1
