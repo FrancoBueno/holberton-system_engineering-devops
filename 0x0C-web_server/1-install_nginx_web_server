@@ -2,12 +2,10 @@
 # Bash script that configure the nginx
 
 
-sudo apt-get -y upgrade
 sudo apt-get -y update
 sudo apt-get -y install nginx
 sudo ufw allow 'Nginx HTTP'
-sudo service nginx start
 
-echo "Hello World!" > sudo tee /var/www/html/index.html
+echo "Hello World!" > /var/www/html/index.html
 
 sudo service nginx restart
