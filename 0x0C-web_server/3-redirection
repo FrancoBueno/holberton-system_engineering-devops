@@ -1,0 +1,18 @@
+#!/bin/bash
+# Redirection
+
+sudo apt-get -y update
+sudo apt-get -y install nginx
+sudo ufw allow 'Nginx HTTP'
+
+echo "Hello World!" > /var/www/html/index.html
+
+printf %s "server {
+    listen 80;
+    listen [::]:80;
+    root   /var/www/html;
+    index  index.html;
+    location /redirect_me {
+        return 301;
+    }
+}" > /etc/nginx/sites-available/default
