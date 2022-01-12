@@ -2,7 +2,7 @@
 #install haproxy
 
 apt update
-apt install -y haproxy=1.6.\*
+sudo apt install haproxy
 
 printf %s "
 frontend http_front
@@ -11,8 +11,8 @@ frontend http_front
    default_backend http_back
 backend http_back
     balance roundrobin
-    server 3290-web-01 35.237.241.192 check
-    server 3290-web-02 34.139.46.240 check
+    server 3290-web-01 34.138.247.205:80 check
+    server 3290-web-02 34.74.60.97:80 check
 " >> /etc/haproxy/haproxy.cfg
 
 service haproxy start
