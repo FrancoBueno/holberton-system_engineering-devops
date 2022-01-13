@@ -1,23 +1,19 @@
 #!/usr/bin/env bash
-# 0-world_wide_web
-function echo_print {
-	echo "The subdomain "$1" is a "$3" record and points to "$2""
+#0. World wide web
+function echo_function {
+	 echo The subdomain "$1" is a "$3" record and points to "$2"
 }
-if [ $# -lt 1 ]; then
-	echo "illegal number of parameters"
-	exit
-fi
 if [[ $# == 1 ]]; then
-	#comment checker
-	sd=(www lb-01 web-01 web-02)
-	for i in "${sd[@]}"; do
-		address=$(dig $i."$1" | grep -A1 'ANSWER SECTION:' | awk -F' ' '{printf ("%s", $5)}')
-		record=$(dig $i."$1" | grep -A1 'ANSWER SECTION:' | awk -F' ' '{printf ("%s", $4)}')
-		echo_print "$i" "$address" "$record"
-	done
+   # display information about subdomains.
+   sd=(www lb-01 web-01 web-02)
+   for i in "${sd[@]}"; do
+       address=$(dig $i."$1" | grep -A1 'ANSWER SECTION:' | awk -F' ' '{printf ("%s", $5)}')
+       record=$(dig $i."$1" | grep -A1 'ANSWER SECTION:' | awk -F' ' '{printf ("%s", $4)}')
+       echo_function "$i" "$address" "$record"
+   done
 elif [[ $# == 2 ]]; then
-	#comment 2
-	address=$(dig $2."$1" | grep -A1 'ANSWER SECTION:' | awk -F' ' '{printf ("%s", $5)}')
-	record=$(dig $2."$1" | grep -A1 'ANSWER SECTION:' | awk -F' ' '{printf ("%s", $4)}')
-	echo_print "$2" "$address" "$record"
+     # display information about subdomains and domains
+     address=$(dig $2."$1" | grep -A1 'ANSWER SECTION:' | awk -F' ' '{printf ("%s", $5)}')
+     record=$(dig $2."$1" | grep -A1 'ANSWER SECTION:' | awk -F' ' '{printf ("%s", $4)}')
+     echo_function "$2" "$address" "$record"
 fi
