@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
 #0. World wide web
+#giaasdass
 function echo_function {
 	 echo The subdomain "$1" is a "$3" record and points to "$2"
 }
