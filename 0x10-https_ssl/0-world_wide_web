@@ -4,12 +4,13 @@
 sd=(www lb-01 web-01 web-02)
 if [[ $# == 1 ]]; then
 	#comment checker
-	for i in "${sd[@]}";do
+	for i in "${sd[@]}"; do
 		address=$(dig $i."$1" | grep -A1 'ANSWER SECTION:' | awk -F' ' '{printf("%s", $5)}')
 		record=$(dig $i."$1" | grep -A1 'ANSWER SECTION:' | awk -F' ' '{printf("%s", $4)}')
 		echo "The subdomain "$i" is a "$record" record and points to "$address""
 	done
 elif [[ $# == 2 ]]; then
+	#comment 2
 	address=$(dig $2."$1" | grep -A1 'ANSWER SECTION:' | awk -F' ' '{printf("%s", $5)}')
 	record=$(dig $2."$1" | grep -A1 'ANSWER SECTION:' | awk -F' ' '{printf ("%s", $4)}')
 	echo "The subdomain "$2" is a "$address" record and points to "$record""
