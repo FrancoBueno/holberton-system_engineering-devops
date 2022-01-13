@@ -4,7 +4,7 @@
 function echo_function {
 	 echo The subdomain "$1" is a "$3" record and points to "$2"
 }
-if [[ "$#" = 1 ]]; then
+if [[ $# == 1 ]]; then
    # display information about subdomains.
    sd=(www lb-01 web-01 web-02)
    for i in "${sd[@]}"; do
@@ -12,7 +12,7 @@ if [[ "$#" = 1 ]]; then
        record=$(dig $i."$1" | grep -A1 'ANSWER SECTION:' | awk -F' ' '{printf ("%s", $4)}')
        echo_function "$i" "$address" "$record"
    done
-elif [[ "$#" = 2 ]]; then
+elif [[ $# == 2 ]]; then
      # display information about subdomains and domains
      address=$(dig $2."$1" | grep -A1 'ANSWER SECTION:' | awk -F' ' '{printf ("%s", $5)}')
      record=$(dig $2."$1" | grep -A1 'ANSWER SECTION:' | awk -F' ' '{printf ("%s", $5)}')
