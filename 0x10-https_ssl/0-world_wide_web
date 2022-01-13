@@ -3,6 +3,7 @@
 
 sd=(www lb-01 web-01 web-02)
 if [[ $# == 1 ]]; then
+	#comment checker
 	for i in "${sd[@]}";do
 		address=$(dig $i."$1" | grep -A1 'ANSWER SECTION:' | awk -F' ' '{printf("%s", $5)}')
 		record=$(dig $i."$1" | grep -A1 'ANSWER SECTION:' | awk -F' ' '{printf("%s", $4)}')
