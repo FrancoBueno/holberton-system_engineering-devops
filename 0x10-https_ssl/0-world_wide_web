@@ -1,19 +1,12 @@
 #!/usr/bin/env bash
 #0. World wide web
-function echo_function {
-	 echo The subdomain "$1" is a "$3" record and points to "$2"
-}
-if [[ $# == 1 ]]; then
-   # display information about subdomains.
-   sd=(www lb-01 web-01 web-02)
-   for i in "${sd[@]}"; do
-       address=$(dig $i."$1" | grep -A1 'ANSWER SECTION:' | tail -1 | awk '{print $4}')
-       record=$(dig $i."$1" | grep -A1 'ANSWER SECTION:' | tail -1 | awk '{print $5}')
-       echo_function "$i" "$record" "$address"
-   done
-elif [[ $# == 2 ]]; then
-     # display information about subdomains and domains
-     address=$(dig $2."$1" | grep -A1 'ANSWER SECTION:' | tail -1 | awk '{print $4}')
-     record=$(dig $2."$1" | grep -A1 'ANSWER SECTION:' | tail -1 | awk '{print $5}')
-     echo_function "$2" "$record" "$address"
+
+sd=("www" "lb-01" "web-01" "web-02")
+
+if [ $# -eq 2 ]; then
+   dig "$2.$1" | grep -A1 'ANSWER SECTION:' | grep -v 'ANSWER' | awk -v dom="$2" '{print "The subdomain "dom" is a "$4" record and points to "$5}'
+else
+	for i in "${sd[@]}"; do
+	    	  dig "$i.$1" | grep -A1 'ANSWER SECTION:' | grep -v 'ANSWER' | awk -v dom="$i" '{print "The subdomain "dom" is a "$4" record and points to "$5}'
+ 	done
 fi
