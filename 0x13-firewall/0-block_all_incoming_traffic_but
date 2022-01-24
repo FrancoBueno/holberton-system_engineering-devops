@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+# install and set the ports
+
+apt-get -y install ufw
+sudo ufw allow ssh
+sudo ufw allow http
+sudo ufw allow https
+sudo ufw enable 
