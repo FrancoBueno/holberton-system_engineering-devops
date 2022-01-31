@@ -1,6 +1,5 @@
 #!/usr/bin/python3
 """ API Project """
-
 import requests as req
 from sys import argv
 import json
