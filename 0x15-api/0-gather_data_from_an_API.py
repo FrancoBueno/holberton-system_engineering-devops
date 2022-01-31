@@ -7,11 +7,9 @@ from sys import argv
 if __name__ == "__main__":
     argument = argv[1]
     name = requests.get(
-        "https://jsonplaceholder.typicode.com/users/{}".format(
-            argument)).json()
+        "https://jsonplaceholder.typicode.com/users/" + argument).json()
     task = requests.get(
-        "https://jsonplaceholder.typicode.com/todos?userId={}".format(
-            argument)).json()
+        "https://jsonplaceholder.typicode.com/todos?userId=" + argument).json()
     taskscompleted = [
             tasks.get("title") for tasks in task if tasks.get("completed")]
     print(
