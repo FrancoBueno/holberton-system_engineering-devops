@@ -40,5 +40,5 @@ if __name__ == "__main__":
               format(userr["name"], i, tode[1]))
 
         for x in range(i):
-            print('\t{}'.format(tode[0][x]))
+            print('\t {}'.format(tode[0][x]))
     user_todo()
