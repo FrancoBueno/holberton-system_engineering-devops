@@ -18,6 +18,8 @@ if __name__ == "__main__":
     taskscompleted = [
         tasks.get("title") for tasks in task if tasks.get("completed")]
 
-    with open ("{}.json".format(argument), mode='w') as File:
-        dictoftasks = [{'task': tasks.get("title"), 'completed': tasks.get("completed"), "username": name.get("username")} for tasks in task]
+    with open("{}.json".format(argument), mode='w') as File:
+        dictoftasks = [{'task': tasks.get("title"),
+                        'completed': tasks.get("completed"),
+                        "username": name.get("username")} for tasks in task]
         json.dump({task[0].get('userId'): dictoftasks}, File)
