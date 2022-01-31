@@ -1,44 +1,22 @@
 #!/usr/bin/python3
 """ API Project """
 
-import requests
+import requests as req
 from sys import argv
+import json
+
 
 if __name__ == "__main__":
-    def user():
-        """ find the user"""
-        req = requests.get('https://jsonplaceholder.typicode.com/users')
-        lista = req.json()
+    resp = req.get('https://jsonplaceholder.typicode.com/users/{}'.format(argv[1]))
+    dic = json.loads(resp.text)
+    name = dic.get('name')
+    resp = req.get('https://jsonplaceholder.typicode.com/todos/?userId={}'.format(argv[1]))
+    todo = json.loads(resp.text)
+    tasks = len(todo)
+    completed = [task for task in todo if task.get("completed")]
+    k = len(completed)
 
-        for usr in lista:
-            if usr["id"] == int(argv[1]):
-                return usr
+    print("Employee {} is done with tasks({}/{}):".format(name, k, tasks))
 
-    def todo():
-        """ sadasdas """
-        todo = []
-        total = 0
-        req = requests.get('https://jsonplaceholder.typicode.com/todos')
-        lista = req.json()
-
-        for todos in lista:
-            if todos['userId'] == int(argv[1]):
-                total += 1
-            if todos['userId'] == int(argv[1]) and todos['completed'] is True:
-                todo.append(todos["title"])
-        return todo, total
-
-    def user_todo():
-        """ asdasdasd """
-        i = 0
-
-        userr = user()
-        tode = todo()
-        i = len(tode[0])
-
-        print('Employee {} is done with tasks({}/{}):'.
-              format(userr["name"], i, tode[1]))
-
-        for x in range(i):
-            print('\t {}'.format(tode[0][x]))
-    user_todo()
+    for task in completed:
+        print("\t", task.get("title"))
