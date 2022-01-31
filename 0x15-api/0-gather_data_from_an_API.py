@@ -8,9 +8,9 @@ if __name__ == "__main__":
 
     Ids = argv[1]
     users = requests.get("https://jsonplaceholder.typicode.com/users/{}".
-                     format(Ids), verify=False).json()
+                         format(Ids), verify=False).json()
     tass = requests.get("https://jsonplaceholder.typicode.com/todos?userId={}".
-                       format(Ids), verify=False).json()
+                        format(Ids), verify=False).json()
     taskscompleted = []
     for tasks in tass:
         if tasks.get('completed') is True:
