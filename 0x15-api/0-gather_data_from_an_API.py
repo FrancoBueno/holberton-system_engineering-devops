@@ -17,4 +17,4 @@ if __name__ == '__main__':
           .format(userInfo.get('name'), len(completedTasks), len(tasks)))
 
     for task in completedTasks:
-        print('\t {}'.format(task))
+        print('     {}'.format(task))
