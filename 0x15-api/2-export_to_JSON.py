@@ -1,24 +1,27 @@
 #!/usr/bin/python3
-""" API Project """
+"""
+asdjasdkas
+"""
 
+import json
 import requests
 from sys import argv
-import json
 
-
-if __name__ == "__main__":
-    argument = argv[1]
-    name = requests.get(
-        "https://jsonplaceholder.typicode.com/users/{}".format(
-            argument)).json()
-    task = requests.get(
-        "https://jsonplaceholder.typicode.com/todos?userId={}".format(
-            argument)).json()
-    taskscompleted = [
-        tasks.get("title") for tasks in task if tasks.get("completed")]
-
-    with open("{}.json".format(argument), mode='w') as File:
-        dictoftasks = [{'task': tasks.get("title"),
-                        'completed': tasks.get("completed"),
-                        "username": name.get("username")} for tasks in task]
-        json.dump({task[0].get('userId'): dictoftasks}, File)
+if __name__ == '__main__':
+    userId = argv[1]
+    user = requests.get("https://jsonplaceholder.typicode.com/users/{}".
+                        format(userId), verify=False).json()
+    todo = requests.get("https://jsonplaceholder.typicode.com/todos?userId={}".
+                        format(userId), verify=False).json()
+    username = user.get('username')
+    tasks = []
+    for task in todo:
+        task_dict = {}
+        task_dict["task"] = task.get('title')
+        task_dict["completed"] = task.get('completed')
+        task_dict["username"] = username
+        tasks.append(task_dict)
+    jsonobj = {}
+    jsonobj[userId] = tasks
+    with open("{}.json".format(userId), 'w') as jsonfile:
+        json.dump(jsonobj, jsonfile)
