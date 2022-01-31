@@ -14,15 +14,15 @@ if __name__ == "__main__":
         if usr["id"] == int(argv[1]):
             user = dict(usr)
             break
-    taskcompleted = []
+    taskcompleted = 0
     user_all = []
     user_comp = []
 
     for usr in task:
         if usr["userId"] == int(argv[1]):
             user_all.append(dict(usr))
-            if usr["completed"] is True:
-                taskcompleted =  taskcompleted + 1
+            if usr["completed"]:
+                taskcompleted = taskcompleted + 1
                 user_comp.append(dict(usr))
 
     print("Employee {} is done with tasks({}/{}):"
