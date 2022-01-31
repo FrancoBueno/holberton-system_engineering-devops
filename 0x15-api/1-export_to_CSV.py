@@ -17,8 +17,8 @@ if __name__ == "__main__":
     taskscompleted = [
         tasks.get("title") for tasks in task if tasks.get("completed")]
 
-    with open ("{}.csv".format(argument), mode='w') as File:
+    with open("{}.csv".format(argument), mode='w') as File:
         writer = csv.writer(File)
         for tasks in task:
-            writer.writerow([name.get("id"), name.get("username"), tasks.get("completed"), tasks.get("title")])
-
+            writer.writerow([name.get("id"), name.get("username"),
+                            tasks.get("completed"), tasks.get("title")])
