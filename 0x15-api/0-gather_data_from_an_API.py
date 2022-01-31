@@ -1,10 +1,10 @@
 #!/usr/bin/python3
 """ API Project """
 
-if __name__ == "__main__":
-    import requests
-    from sys import argv
+import requests
+from sys import argv
 
+if __name__ == "__main__":
     def user():
         """ find the user"""
         req = requests.get('https://jsonplaceholder.typicode.com/users')
