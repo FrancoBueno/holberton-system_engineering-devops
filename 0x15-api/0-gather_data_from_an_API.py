@@ -1,22 +1,21 @@
 #!/usr/bin/python3
-""" API Project """
+""" Data In API """
 import json
-import requests as req
-from sys import argv
+import requests
+import sys
+
 
 if __name__ == "__main__":
-    resp = req.get('https://jsonplaceholder.typicode.com/users/{}'
-                   .format(argv[1]))
-    dic = json.loads(resp.text)
+    response = requests.get("https://jsonplaceholder.typicode.com/users/" +
+                            sys.argv[1])
+    dic = json.loads(response.text)
     name = dic.get('name')
-    resp = req.get('https://jsonplaceholder.typicode.com/todos/?userId={}'
-                   .format(argv[1]))
-    todo = json.loads(resp.text)
-    tasks = len(todo)
-    completed = [task for task in todo if task.get("completed")]
-    k = len(completed)
-
-    print("Employee {} is done with tasks({}/{}):".format(name, k, tasks))
-
+    response = requests.get("https://jsonplaceholder.typicode.com/todos/" +
+                            "?userId=" + sys.argv[1])
+    todos = json.loads(response.text)
+    tasks = len(todos)
+    completed = [task for task in todos if task.get('completed')]
+    done = len(completed)
+    print("Employee {} is done with tasks({}/{}):".format(name, done, tasks))
     for task in completed:
-        print("\t", task.get("title"))
+        print("\t", task.get('title'))
