@@ -1,12 +1,11 @@
 #!/usr/bin/python3
 """ API Project """
 
-import requests
-from sys import argv
-import csv
-
 
 if __name__ == "__main__":
+    import requests
+    from sys import argv
+    import csv
     argument = argv[1]
     name = requests.get(
         "https://jsonplaceholder.typicode.com/users/{}".format(
