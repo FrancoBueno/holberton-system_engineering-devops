@@ -3,7 +3,6 @@
 
 import requests
 from sys import argv
-import csv
 import json
 
 
