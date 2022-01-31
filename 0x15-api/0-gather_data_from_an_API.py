@@ -5,15 +5,16 @@
 if __name__ == "__main__":
     import requests
     from sys import argv
-    argument = argv[1]
-    name = requests.get(
-        "https://jsonplaceholder.typicode.com/users/" + argument).json()
-    task = requests.get(
-        "https://jsonplaceholder.typicode.com/todos?userId=" + argument).json()
+
+    Ids = argv[1]
+    users = requests.get("https://jsonplaceholder.typicode.com/users/{}".
+                     format(Ids), verify=False).json()
+    tass = requests.get("https://jsonplaceholder.typicode.com/todos?userId={}".
+                       format(Ids), verify=False).json()
     taskscompleted = []
-    for tasks in task:
-        if tasks.get("completed") is True:
+    for tasks in tass:
+        if tasks.get('completed') is True:
             taskscompleted.append(tasks.get('title'))
     print("Employee {} is done with tasks({}/{}):".
-          format(name.get('name'), len(taskscompleted), len(task)))
-    print('\n'.join('\t {}'.format(task) for task in taskscompleted))
+          format(users.get('name'), len(taskscompleted), len(tass)))
+    print("\n".join("\t {}".format(tasks) for tasks in taskscompleted))
