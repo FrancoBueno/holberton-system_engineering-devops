@@ -6,9 +6,9 @@ if __name__ == "__main__":
     import requests
     from sys import argv
     name = requests.get(
-        "https://jsonplaceholder.typicode.com/users/".json()
+        "https://jsonplaceholder.typicode.com/users").json()
     task = requests.get(
-        "https://jsonplaceholder.typicode.com/todos/".json()
+        "https://jsonplaceholder.typicode.com/todos").json()
     user = {}
     for usr in name:
         if usr["id"] == int(argv[1]):
