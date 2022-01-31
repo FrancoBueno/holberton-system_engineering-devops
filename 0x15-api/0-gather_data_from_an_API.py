@@ -1,9 +1,8 @@
 #!/usr/bin/python3
 """ API Project """
+import json
 import requests as req
 from sys import argv
-import json
-
 
 if __name__ == "__main__":
     resp = req.get('https://jsonplaceholder.typicode.com/users/{}'
