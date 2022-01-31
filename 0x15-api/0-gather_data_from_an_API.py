@@ -13,7 +13,7 @@ if __name__ == "__main__":
     taskscompleted = [
             tasks.get("title") for tasks in task if tasks.get("completed")]
     print(
-        "Employee {} is done with tasks({}/{}):".format(
+        "Employee sads{} is done with tasks({}/{}):".format(
             name.get("name"), len(taskscompleted), len(task)))
     for task in taskscompleted:
         print('\t {}'.format(task))
