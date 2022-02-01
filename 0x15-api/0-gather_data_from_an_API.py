@@ -1,39 +1,34 @@
 #!/usr/bin/python3
-"""using the JSONPlaceholder API"""
-import requests as req
-from sys import argv
+"""API DATA TO PRINT"""
 
 
-if __name__ == "__main__":
-    user_id = int(argv[1])
+if __name__ == '__main__':
+    import requests
+    from sys import argv
 
-    def get_user():
-        """function to get user from json response, matching by id from argv"""
-        users = req.get('https://jsonplaceholder.typicode.com/users').json()
-        user = {}
-        for elem in users:
-            if elem["id"] == user_id:
-                user = dict(elem)
-                break
-        return user
+    todos = 'https://jsonplaceholder.typicode.com/todos'
+    users = 'https://jsonplaceholder.typicode.com/users'
 
-    def get_todos():
-        """function to get list of Employee's completed tasks"""
-        user = get_user()
-        todos = req.get('https://jsonplaceholder.typicode.com/todos').json()
-        user_todos = []
-        user_todos_compl = []
-        completed_tasks = 0
-        for elem in todos:
-            if elem["userId"] == user_id:
-                user_todos.append(dict(elem))
-                if elem["completed"]:
-                    completed_tasks = completed_tasks + 1
-                    user_todos_compl.append(dict(elem))
-        total_tasks = len(user_todos)
-        print("Employee {} is done with tasks({}/{}):"
-              .format(user["name"], completed_tasks, total_tasks))
-        for task in user_todos_compl:
-            print("\t {}".format(task["title"]))
+    response1 = requests.get(todos)
+    response2 = requests.get(users)
 
-    get_todos()
+    users_json = response2.json()
+    todos_json = response1.json()
+
+    name = users_json[int(argv[1]) - 1]['name']
+
+    donetask = 0
+    tasks = 0
+    dosome = []
+    uid = int(argv[1])
+    for tmp in todos_json:
+        if tmp['userId'] == uid:
+            if tmp['completed'] is True:
+                donetask = donetask + 1
+                dosome.append(tmp['title'])
+            tasks = tasks + 1
+
+    print('Employee {} is done with tasks({}/{}):'.format(
+        name, donetask, tasks))
+    for TASK_TITLE in dosome:
+        print('\t {}'.format(TASK_TITLE))
