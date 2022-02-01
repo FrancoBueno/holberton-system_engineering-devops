@@ -9,13 +9,14 @@ if __name__ == '__main__':
     from sys import argv
     userId = argv[1]
     user = requests.get("https://jsonplaceholder.typicode.com/users/{}".
-                        format(userId), verify=False).json()
+                        format(userId)).json()
     todo = requests.get("https://jsonplaceholder.typicode.com/todos?userId={}".
-                        format(userId), verify=False).json()
+                        format(userId)).json()
     completed_tasks = []
     for task in todo:
         if task.get('completed') is True:
             completed_tasks.append(task.get('title'))
     print("Employee {} is done with tasks({}/{}):".
           format(user.get('name'), len(completed_tasks), len(todo)))
-    print("\t {}".format(task) for task in completed_tasks))
+    for task in completed_tasks:
+        print("\t {}".format(task))
