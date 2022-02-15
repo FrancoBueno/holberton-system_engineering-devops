@@ -13,9 +13,10 @@ def recurse(subreddit, hot_list=[], after="", count=0):
     header = {
         'User-Agent': 'linux:0x16.api.advanced:v1.0.0 (by u/Frankitooo019)'
     }
-    params = {'limit': '100',
-              'count': count,
-              'after': after
+    params = {
+        'limit': '100',
+        'count': count,
+        'after': after
     }
     resp = requests.get(
            url, headers=header, params=params, allow_redirects=False)
