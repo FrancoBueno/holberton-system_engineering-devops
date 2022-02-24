@@ -1,9 +1,10 @@
 # User limit
-exec { 'fixhard' :
-    provider => shell,
-    command  => 'sed -i sed -i s/5/4069/ /etc/security/limits.conf'
+exec { 'hard':
+  command  => 'sed -i "s/holberton hard nofile 5/holberton hard nofile 55000/g" /etc/security/limits.conf',
+  provider => 'shell'
 }
-exec { 'fixsoft' :
-    provider => shell,
-    command  => 'sed -i sed -i s/4/4069/ /etc/security/limits.conf'
+
+exec { 'soft':
+  command  => 'sed -i "s/holberton soft nofile 4/holberton soft nofile 55000/g" /etc/security/limits.conf',
+  provider => 'shell'
 }
